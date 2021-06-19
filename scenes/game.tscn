@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/results.png" type="Texture" id=1]
+[ext_resource path="res://sprites/slot_machine.png" type="Texture" id=2]
+[ext_resource path="res://sprites/slot.png" type="Texture" id=3]
+[ext_resource path="res://sprites/handle.png" type="Texture" id=4]
+[ext_resource path="res://prefabs/slot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/slot_machine.gd" type="Script" id=6]
+[ext_resource path="res://fonts/CANDARA.TTF" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+use_filter = true
+font_data = ExtResource( 7 )
+
+[node name="SlotMachine" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color( 0.168627, 0.258824, 0.501961, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -351.0
+margin_top = 20.6362
+margin_right = 351.0
+margin_bottom = 169.636
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoltMachine" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -324.0
+margin_top = -315.077
+margin_right = 344.0
+margin_bottom = 629.923
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Handle" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 173.887
+margin_top = -223.741
+margin_right = 482.887
+margin_bottom = 218.259
+rect_pivot_offset = Vector2( 0.108765, 431.398 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" parent="." instance=ExtResource( 5 )]
+margin_left = -44.7818
+margin_top = -28.5275
+margin_right = 37.2182
+margin_bottom = 53.4725
+
+[node name="Slot2" parent="." instance=ExtResource( 5 )]
+margin_left = -133.654
+margin_top = -28.5275
+margin_right = -51.6535
+margin_bottom = 53.4725
+
+[node name="Slot3" parent="." instance=ExtResource( 5 )]
+margin_left = 44.5262
+margin_top = -28.5275
+margin_right = 126.526
+margin_bottom = 53.4725
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Winner" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -323.0
+margin_top = 179.962
+margin_right = 323.0
+margin_bottom = 300.962
+custom_fonts/font = SubResource( 1 )
+text = "Você Ganhou: 5000"
+align = 1
+valign = 1
+[connection signal="pressed" from="Handle" to="." method="_on_Handle_pressed"]
